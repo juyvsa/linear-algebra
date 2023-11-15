@@ -3,6 +3,7 @@ from augmented_matrix import AugmentedMatrix
 from linear_equation import LinearEquation
 import numpy as np
 
+
 def is_linear_combination(vect, *a):  # vect is vector, a is collection (list) of vectors
     assert len(a[0]) == len(vect)  # a and v are both n-vectors. technically i should check all a_i
 
@@ -22,7 +23,7 @@ def does_span_rn(*a):  # a is collection of k n-vectors
     mat = Matrix(np.column_stack(a))
     return mat.are_all_rows_pivs
 
-#TESTING
+# TESTING
 u1 = [1,1,-2]
 u2 = [2,3,-3]
 u3 = [0,1,1]
