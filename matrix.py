@@ -245,3 +245,14 @@ class Matrix(np.ndarray):
                     return False
         return True
 
+    @property
+    def inverse(self):
+        from augmented_matrix import AugmentedMatrix
+
+        assert self.shape[0] == self.shape[1]
+        aug_mat = AugmentedMatrix(self, np.identity(self.shape[0]))
+        aug_mat.to_rref()
+        if np.array_equal(aug_mat.left, np.identity(self.shape[0])):
+            return aug_mat.right
+        return
+
