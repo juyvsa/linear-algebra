@@ -23,9 +23,9 @@ class Matrix(np.ndarray):
     def swap_rows(self, rowi_index, rowj_index):  # Ri <--> Rj
         assert 0 <= rowi_index < self.shape[0] and 0 <= rowj_index < self.shape[0]
 
-        r1 = self[rowi_index]
+        ri = self[rowi_index].copy()
         self[rowi_index] = self[rowj_index]
-        self[rowj_index] = r1
+        self[rowj_index] = ri
         print("R{} ↔ R{}".format(format_sub_number(rowi_index), format_sub_number(rowj_index)))
         print(self)
 
@@ -68,16 +68,17 @@ class Matrix(np.ndarray):
                         return other_nonzero_indices[0]  # return the first nonzero index of new first row
                 return  # matrix is all zeros
 
-        else: # not first row
+        else:  # not first row
             prev_piv_index = self.get_row_pivot(row_index - 1)  # index of first nonzero entry of previous row
 
             for i in range(prev_piv_index + 1, self.shape[1]):  # all cols from one after previous pivot
                 nonzero_indices = np.nonzero(self[:, i])[0]  # nonzero elements of ith col of self
-                if len(nonzero_indices) != 0:  # there are nonzero entries in this col, in current row or after
+                nonzero_indices = nonzero_indices[nonzero_indices >= row_index]  # only entries in/after this row
+                if len(nonzero_indices) != 0:  # nonzero entries in/after this row
                     if nonzero_indices[0] > prev_piv_index + 1:
                         # zero in this row but nonzero entry later in column
                         self.swap_rows(row_index, nonzero_indices[0])  # put nonzero row in current row
-                    return i  # there is in the ith column of this row, whether i had to swap or not
+                    return i  # there is piv in the ith column of this row, whether i had to swap or not
             return  # if you're still here, the rows at or below the current row are all zero
 
     def get_row_pivot(self, row_index):  # returns the first nonzero entry of this row
