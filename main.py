@@ -23,7 +23,9 @@ def does_span_rn(*a):  # a is collection of k n-vectors
     mat = Matrix(np.column_stack(a))
     return mat.are_all_rows_pivs
 
+
 # TESTING
+"""
 u1 = [1,1,-2]
 u2 = [2,3,-3]
 u3 = [0,1,1]
@@ -42,3 +44,17 @@ print(m.echelon_form)
 
 mat = Matrix([[-5,-4,-4],[4,3,4],[2,2,1]])
 print(mat.inverse)
+
+mat16 = AugmentedMatrix([[1,1,1,1],[1,2,3,3],[1,2,2,2],[1,2,3,4]], np.identity(4))
+print(mat16.rref)
+
+
+mat3 = Matrix([[1,1,-1,3],[1,2,2,2],[1,2,1,3],[1,3,4,1]])
+print(mat3.echelon_form)
+
+mat4 = Matrix([[1,2,1],[-1,-1,-2],[0,1,0],[2,3,3]])
+print(mat4.echelon_form)
+"""
+
+mat7 = Matrix([[1,-10,8],[4,-18,13],[4,-20,15]])
+print(mat7.echelon_form)

@@ -18,7 +18,7 @@ class AugmentedMatrix(Matrix):
             else:
                 rhs = args[1]
             mat = super().__new__(cls, np.concatenate((args[0], rhs), axis=1))
-            mat.delimiter_index = args[0].shape[0]
+            mat.delimiter_index = np.array(args[0]).shape[0]
 
         else:
             raise TypeError()

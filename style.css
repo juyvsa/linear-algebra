@@ -1,11 +1,11 @@
 body {
-    background-color: red;
+    background-color: #8759d7;
 }
 
 .content {
     max-width: 1000px;
     margin: auto;
-    background-color: aquamarine;
+    background-color: #6b3db4;
     padding: 20px;
 }
 
@@ -35,7 +35,7 @@ p#front{
 }
 p {
 	padding: 5px;
-	font-size: 1.1em;
+	font-size: 2em;
 }
 ol.list, ul.list{
 	font-size: 1em;
@@ -49,5 +49,13 @@ h3, h2{
 }
 
 h5 {
-    font-size: 2em;
+    font-size: 3em;
+}
+
+button {
+	font-size: 2em
+}
+
+input {
+	font-size: 1.3em
 }
